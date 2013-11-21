@@ -1,0 +1,55 @@
+{
+  "create": {
+    "actors": [
+      "pivotal",
+      "rmusaritolo"
+    ],
+    "groups": [
+      "admins",
+      "clients",
+      "users"
+    ]
+  },
+  "read": {
+    "actors": [
+      "pivotal",
+      "rmusaritolo"
+    ],
+    "groups": [
+      "admins",
+      "clients",
+      "users"
+    ]
+  },
+  "update": {
+    "actors": [
+      "pivotal",
+      "rmusaritolo"
+    ],
+    "groups": [
+      "admins",
+      "clients",
+      "users"
+    ]
+  },
+  "delete": {
+    "actors": [
+      "pivotal",
+      "rmusaritolo"
+    ],
+    "groups": [
+      "admins",
+      "clients",
+      "users"
+    ]
+  },
+  "grant": {
+    "actors": [
+      "pivotal",
+      "rmusaritolo"
+    ],
+    "groups": [
+      "admins"
+    ]
+  }
+}

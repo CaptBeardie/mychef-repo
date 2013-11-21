@@ -1,0 +1,12 @@
+{
+  "name": "production",
+  "description": "For Prods!",
+  "cookbook_versions": {
+    "apache": "= 0.2.1"
+  },
+  "override_attributes": {
+    "pci": {
+      "in_scope": true
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "create": {
+    "actors": [
+      "dj-465",
+      "pivotal"
+    ],
+    "groups": [
+      "admins",
+      "clients",
+      "users"
+    ]
+  },
+  "read": {
+    "actors": [
+      "dj-465",
+      "pivotal"
+    ],
+    "groups": [
+      "admins",
+      "clients",
+      "users"
+    ]
+  },
+  "update": {
+    "actors": [
+      "dj-465",
+      "pivotal"
+    ],
+    "groups": [
+      "admins",
+      "users"
+    ]
+  },
+  "delete": {
+    "actors": [
+      "dj-465",
+      "pivotal"
+    ],
+    "groups": [
+      "admins",
+      "users"
+    ]
+  },
+  "grant": {
+    "actors": [
+      "dj-465",
+      "pivotal"
+    ],
+    "groups": [
+      "admins"
+    ]
+  }
+}

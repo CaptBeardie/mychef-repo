@@ -1,0 +1,20 @@
+{
+  "name": "webserver",
+  "description": "webserver",
+  "default_attributes": {
+    "apache": {
+      "sites": {
+        "ponies": {
+          "port": 82
+        },
+        "bears": {
+          "port": 8081
+        }
+      }
+    }
+  },
+  "run_list": [
+    "role[base]",
+    "recipe[apache]"
+  ]
+}
