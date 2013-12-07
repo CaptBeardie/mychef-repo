@@ -15,15 +15,24 @@ end
 
 template "/etc/httpd/conf/httpd.conf.NEW" do
   source "httpd.conf.NEW"
-  owner "apache"
-  group "apache"
+  owner "root"
+  group "root"
   mode 0644
   #notifies :restart, "service[httpd]"
 end
 
-cookbook_dir "/etc/httpd/vhost.d" do
-  source "vhost.d-conf"
+directory "/etc/httpd/conf-NOTHERE" do
   mode 0755
-  notifies :graceful, "service[httpd]"
+  owner "root"
+  group "root"
+  #notifies :graceful, "service[httpd]"
+end
+
+# Testing a missing directory
+template "/etc/httpd/conf-NOTHERE/httpd.conf.NEW" do
+  source "httpd.conf.NEW"
+  owner "root"
+  group "root"
+  mode 0644
 end
 
