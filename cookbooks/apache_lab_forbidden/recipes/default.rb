@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-
+# First clear all existing vhosts
 case node[:platform]
 when "redhat","centos"
   execute "rm -rf /etc/httpd/vhost.d/*" do
@@ -20,6 +20,7 @@ when "ubuntu","debian"
   end
 end
 
+# Add the custom CentOS apache config and vhost files
 case node[:platform]
 when "redhat","centos"
   directory "/etc/httpd/vhost.d" do
@@ -42,6 +43,8 @@ when "redhat","centos"
     mode 0644
   end
 
+# Or add the custom Ubuntu apache config and vhost files
+
 when "ubuntu","debian"
   template "/etc/apache2/apache2.conf" do
     source "apache2.conf.erb"
@@ -60,6 +63,15 @@ when "ubuntu","debian"
   execute "a2ensite 001-default.conf" 
 end
 
+
+# Add the vhost docroot
+directory "/var/www/vhosts/example.com" do
+  mode 0755
+  owner "root"
+  group "root"
+end
+
+# Finially, restart the service
 
 case node[:platform]
 when "redhat","centos"

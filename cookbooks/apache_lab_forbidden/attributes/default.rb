@@ -55,7 +55,7 @@ default[:apache][:allowed_openids] = Array.new
 # mod_status
 default[:apache][:status][:enable] = "On"
 default_unless[:apache][:status][:user] = "serverinfo"
-default_unless[:apache][:status][:pass] = secure_password
+default_unless[:apache][:status][:pass] = "secure_password"
 
 # Lets figure maxclients depending on size
 maxclients = node[:memory][:total].to_i / 15000
