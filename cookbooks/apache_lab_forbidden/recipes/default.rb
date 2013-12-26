@@ -74,6 +74,7 @@ directory "/var/www/vhosts/example.com" do
   mode 0744
   owner "root"
   group "root"
+  recursive true
 end
 
 # Add our index and .htaccess files
