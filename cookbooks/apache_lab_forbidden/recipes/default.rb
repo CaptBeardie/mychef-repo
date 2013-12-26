@@ -20,6 +20,11 @@ when "ubuntu","debian"
   end
 end
 
+# Clear existing docroot if it exists
+execute "rm -rf /var/www/vhosts/example.com" do
+  only_if "test -d /var/www/vhosts/example.com"
+end
+
 # Add the custom CentOS apache config and vhost files
 case node[:platform]
 when "redhat","centos"
@@ -66,10 +71,27 @@ end
 
 # Add the vhost docroot
 directory "/var/www/vhosts/example.com" do
-  mode 0755
+  mode 0700
   owner "root"
   group "root"
 end
+
+# Add our index and .htaccess files
+template "/var/www/vhosts/example.com/Index.html" do
+  source "Index.html"
+  mode 644
+  owner "root"
+  group "root"
+end
+
+template "/var/www/vhosts/example.com/.htaccess" do
+  source "bad.htaccess"
+  mode 644
+  owner "root"
+  group "root"
+end
+
+
 
 # Finially, restart the service
 
