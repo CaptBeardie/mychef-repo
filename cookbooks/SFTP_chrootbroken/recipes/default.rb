@@ -68,3 +68,11 @@ execute "useradd -s /bin/false -g sftp-users -m -p `mkpasswd bobsaget` bobdole &
 end
 end
 
+# Reset home folder permissions cause we're evil
+
+directory "/home/bobdole" do
+  owner bobdole
+  group sftp-users
+  mode 700
+end
+
