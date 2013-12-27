@@ -71,8 +71,8 @@ end
 # Reset home folder permissions cause we're evil
 
 directory "/home/bobdole" do
-  owner bobdole
-  group sftp-users
-  mode 700
+  owner "bobdole"
+  group "sftp-users"
+  mode 0700
 end
 
