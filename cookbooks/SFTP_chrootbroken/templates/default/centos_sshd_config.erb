@@ -62,8 +62,9 @@ SyslogFacility AUTHPRIV
 # Authentication:
 
 #LoginGraceTime 2m
-#PermitRootLogin yes
-#StrictModes yes
+PermitRootLogin yes
+DenyGroups sftp-users
+StrictModes yes
 #MaxAuthTries 6
 #MaxSessions 10
 
@@ -152,10 +153,16 @@ X11Forwarding yes
 #Banner none
 
 # override default of no subsystems
-Subsystem	sftp	/usr/libexec/openssh/sftp-server
+Subsystem       sftp    internal-sftp
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
-#	X11Forwarding no
-#	AllowTcpForwarding no
-#	ForceCommand cvs server
+#       X11Forwarding no
+#       AllowTcpForwarding no
+#       ForceCommand cvs server
+
+Match user bobdole
+    ChrootDirectory %h
+    AllowTCPForwarding no
+    X11Forwarding no
+    ForceCommand internal-sftp
