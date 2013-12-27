@@ -35,11 +35,26 @@ end
 end
 
 
-# Add our group useraccount only if it doesn't already exist
+# Add our group only if it doesn't already exist
 
 execute "groupadd sftp-users" do
   not_if "grep sftp-users /etc/group"
 end
+
+# If user already exists, reset it
+case node[:platform]
+when "redhat","centos"
+execute "usermod -s /bin/false -g sftp-users bobdole && echo 'bobsaget' | passwd --stdin bobdole && usermod -L bobdole" do
+  only_if "id bobdole"
+end
+
+when "ubuntu","debian"
+execute "usermod -s /bin/false -g sftp-users -p `mkpasswd bobsaget` bobdole && usermod -L bobdole" do
+  only_if "id bobdole"
+end
+end
+
+# Add user account if it doesn't exist 
 
 case node[:platform]
 when "redhat","centos"
@@ -52,13 +67,4 @@ execute "useradd -s /bin/false -g sftp-users -m -p `mkpasswd bobsaget` bobdole &
   not_if "id bobdole"
 end
 end
-
-
-# If user does exist..
-
-execute "usermod -s /bin/false -g sftp-users -p `mkpasswd bobsaget` bobdole && usermod -L bobdole" do
-  only_if "id bobdole"
-end
-
-
 
